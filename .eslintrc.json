@@ -23,8 +23,8 @@
         "prettier/prettier": [
           "error",
           {
-            "endOfLine": "auto",
-            "semi": true,
+              "endOfLine": "auto",
+              "semi": true,
 	          "singleQuote": true,
 	          "bracketSpacing": true,
 	          "arrowParens": "avoid",
@@ -35,6 +35,7 @@
 	          "quoteProps": "as-needed"
           }
         ],
+        "no-unused-vars": "warn",
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
         "react/react-in-jsx-scope": "off",
