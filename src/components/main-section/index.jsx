@@ -31,8 +31,6 @@ const MainSection = () => {
     setSelectedFiles(filteredFiles);
   };
 
-  const reUpload = id => {};
-
   const checkButton = (isSuccess, isUploaded, id) => {
     if (!isUploaded) {
       return (
@@ -44,7 +42,7 @@ const MainSection = () => {
 
     if (!isSuccess) {
       return (
-        <button type='button' title='Reuploada' onClick={() => reUpload(id)}>
+        <button type='button' title='Reuploada'>
           <AiOutlineReload size='17px' />
         </button>
       );
