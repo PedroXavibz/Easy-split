@@ -59,9 +59,9 @@ const MainSection = () => {
 
   return (
     <ContainerMain>
-      <Text wordsToHighligth={['select', 'submit']}>
-        A tool that cuts videos into 30-second chunks. It&apos;s simple just select the video or
-        videos to be cut and click submit
+      <Text>
+        A tool that cuts videos into 30-second chunks. It&apos;s simple just <span>select</span> the
+        video or videos to be cut and click <span>submit</span>
       </Text>
 
       <form onSubmit={handleSubmission}>
