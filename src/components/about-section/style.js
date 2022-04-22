@@ -17,7 +17,7 @@ const ContainerAboutSection = styled.section`
 
   & > a {
     position: fixed;
-    left: 95%;
+    left: 90%;
     top: 84%;
 
     font-size: 3.1rem;
