@@ -9,7 +9,7 @@ const AboutSection = () => {
   useEffect(() => {
     const aboutSection = document.getElementById('about');
 
-    const revealFloatScroll = (entries, observer) => {
+    const revealFloatScroll = entries => {
       const [entry] = entries;
 
       if (!entry.isIntersecting) {
@@ -18,8 +18,6 @@ const AboutSection = () => {
       }
 
       setIsHidden(false);
-
-      observer.unobserver(entry.target);
     };
 
     const sectionObserver = new IntersectionObserver(revealFloatScroll, {
