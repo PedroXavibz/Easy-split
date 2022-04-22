@@ -27,7 +27,7 @@ const Header = () => {
             <li>
               <a href='#about'>About</a>
             </li>
-            <li>
+            <li className='item-spacing'>
               <a
                 href='#/contact'
                 style={!isHidden ? { color: '#ffffff', textDecoration: 'underline #ffffff' } : {}}
