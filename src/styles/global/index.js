@@ -29,6 +29,12 @@ const GlobalStyle = createGlobalStyle`
 		color: #ffff;
 		text-decoration: none;
 	}
+
+	@media (max-width: 768px) {
+		:root {
+			font-size: 40%;
+		}
+}
 `;
 
 export default GlobalStyle;
