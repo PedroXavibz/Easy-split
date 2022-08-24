@@ -33,7 +33,7 @@ const AboutSection = () => {
       <h1>About</h1>
       <Text>
         If you want to cut your videos to be used in applications that have a limit of seconds for
-        an upload, such as <span>wathsapp</span>, the source code of this project is on
+        an upload, such as <span>whatsapp</span>, the source code of this project is on
         <a
           href='https://github.com/PedroXavibz/Easy-split'
           title='https://github.com/PedroXavibz/Easy-split'
