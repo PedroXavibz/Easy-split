@@ -4,7 +4,7 @@ import { AiOutlineUpload, AiOutlineReload } from 'react-icons/ai';
 import { TiTimes } from 'react-icons/ti';
 import { MdDownloadDone } from 'react-icons/md';
 import Text from '../text';
-import ContainerMain from './style';
+import ContainerMain, { ContainerFiles } from './style';
 
 const MainSection = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -31,7 +31,9 @@ const MainSection = () => {
     setSelectedFiles(filteredFiles);
   };
 
-  const reUpload = id => {};
+  const reUpload = id => {
+    console.log(id);
+  };
 
   const checkButton = (isSuccess, isUploaded, id) => {
     if (!isUploaded) {
@@ -90,9 +92,9 @@ const MainSection = () => {
 
       <div>
         {selectedFiles.length > 0 ? (
-          <ul>
+          <ContainerFiles>
             {selectedFiles.map(file => {
-              const strLimit = 30;
+              const strLimit = 48;
 
               return (
                 <li key={file.id} title={file.name}>
@@ -101,7 +103,7 @@ const MainSection = () => {
                 </li>
               );
             })}
-          </ul>
+          </ContainerFiles>
         ) : (
           <h1>Maximum size 500MB</h1>
         )}

@@ -83,9 +83,7 @@ const ContainerMain = styled.section`
     width: 75%;
     height: 30.5rem;
     padding: 1.2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow-y: auto;
 
     margin-top: 3.6rem;
     background: #ffffff;
@@ -95,48 +93,52 @@ const ContainerMain = styled.section`
     text-align: center;
 
     h1 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       font-size: 4.8rem;
       font-family: ${props => props.theme.font.roboto};
       color: ${props => props.theme.color.primary};
     }
+  }
+`;
 
-    ul {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
+export const ContainerFiles = styled.ul`
+  width: 100%;
 
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 3rem;
 
-      li {
-        width: 30.3%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.7rem;
-        margin-bottom: 2rem;
+  padding: 1.2rem;
 
-        border-radius: 0.5rem;
-        background: ${props => props.theme.color.ternary};
-        border: 0.2rem solid ${props => props.theme.font.color};
+  li {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem;
 
-        font-family: ${props => props.theme.font.roboto};
-        color: ${props => props.theme.font.color};
-        font-size: 1.2rem;
-        font-weight: 500;
+    border-radius: 0.5rem;
+    background: ${props => props.theme.color.ternary};
+    border: 0.2rem solid ${props => props.theme.font.color};
 
-        user-select: none;
+    font-family: ${props => props.theme.font.roboto};
+    color: ${props => props.theme.font.color};
+    font-size: 1.2rem;
+    font-weight: 500;
 
-        button {
-          border: none;
-          background: none;
-          outline: none;
+    user-select: none;
 
-          cursor: pointer;
-        }
-      }
+    button {
+      border: none;
+      background: none;
+      outline: none;
+
+      cursor: pointer;
     }
   }
 `;
