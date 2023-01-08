@@ -10,7 +10,9 @@ const dropDownMenu = css`
   ul {
     position: absolute;
     top: 100%;
-    left: 10%;
+    rigth: 0%;
+
+    transform: translateX(-20%);
 
     display: flex;
     flex-direction: column;
@@ -20,7 +22,7 @@ const dropDownMenu = css`
     border-radius: 0.3rem;
 
     li {
-      padding: 1.2rem 3rem;
+      padding: 0.7rem;
       text-align: center;
       text-transform: uppercase;
 
@@ -28,6 +30,7 @@ const dropDownMenu = css`
         display: flex;
         align-items: center;
         position: relative;
+        font-size: 1rem;
 
         &:after,
         &:before {
@@ -60,9 +63,6 @@ const dropDownMenu = css`
             width: 75%;
           }
         }
-        svg {
-          margin-right: 1.2rem;
-        }
       }
     }
   }
@@ -73,12 +73,13 @@ const headerNav = css`
     display: flex;
 
     li {
-      position: relative;
-
       list-style-type: none;
       list-style-position: 'inside';
 
-      padding-left: 6.1rem;
+      &.item-spacing {
+        position: relative;
+        margin-left: 4.1rem;
+      }
 
       a {
         font-family: ${props => props.theme.font.roboto};
