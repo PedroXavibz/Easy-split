@@ -29,22 +29,27 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <ContainerAboutSection id='about'>
+    <ContainerAboutSection id="about">
       <h1>About</h1>
       <Text>
         If you want to cut your videos to be used in applications that have a limit of seconds for
-        an upload, such as <span>whatsapp</span>, the source code of this project is on
+        an upload, such as
+        {' '}
+        <span>whatsapp</span>
+        , the source code of this project is on
         <a
-          href='https://github.com/PedroXavibz/Easy-split'
-          title='https://github.com/PedroXavibz/Easy-split'
+          href="https://github.com/PedroXavibz/Easy-split"
+          title="https://github.com/PedroXavibz/Easy-split"
         >
           <span> github</span>
         </a>
-        , don&apos;t worry about the videos are all <span>encrypted</span>
+        , don&apos;t worry about the videos are all
+        {' '}
+        <span>encrypted</span>
       </Text>
 
       {!isHidden && (
-        <a href='/#'>
+        <a href="/#">
           <BsFillArrowUpCircleFill />
         </a>
       )}
