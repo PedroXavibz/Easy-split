@@ -19,6 +19,7 @@ import ContainerMain, {
 } from './style';
 
 const MainSection = () => {
+  const API = process.env.REACT_APP_API_URL;
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const inputHandler = ({ target }) => {
@@ -89,11 +90,12 @@ const MainSection = () => {
     toggleFile(file.id, 'isUploading');
 
     axios
-      .post('http://localhost:5000/api/v1/video/upload/', data, {
+      .post(API, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'arraybuffer',
       })
       .then(response => {
+        if (!file.isSuccess) toggleFile(file.id, 'isSuccess');
         toggleFile(file.id, 'isUploading');
         toggleFile(file.id, 'alreadyDownloaded');
 
