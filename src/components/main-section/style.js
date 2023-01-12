@@ -15,6 +15,9 @@ const ContainerMain = styled.section`
     justify-content: space-around;
 
     label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: ${props => props.theme.color.secondary};
       padding: 0.83rem;
 
@@ -39,6 +42,10 @@ const ContainerMain = styled.section`
         width: 0.1px;
         height: 0.1px;
         position: absolute;
+      }
+
+      svg {
+        margin-left: 0.5rem;
       }
     }
 
@@ -78,35 +85,35 @@ const ContainerMain = styled.section`
       }
     }
   }
+`;
 
-  div {
-    width: 75%;
-    height: 30.5rem;
-    padding: 1.2rem 0;
-    overflow-y: auto;
+export const ContainerFiles = styled.div`
+  width: 75%;
+  height: 30.5rem;
+  padding: 1.2rem 0;
+  overflow-y: auto;
 
-    margin-top: 3.6rem;
-    background: #ffffff;
-    box-shadow: -0.1rem 0 2.4rem -1.3rem rgba(74, 70, 74, 1);
+  margin-top: 3.6rem;
+  background: #ffffff;
+  box-shadow: -0.1rem 0 2.4rem -1.3rem rgba(74, 70, 74, 1);
 
-    border-radius: 0.5rem;
-    text-align: center;
+  border-radius: 0.5rem;
+  text-align: center;
 
-    h1 {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  h1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      font-size: 4.8rem;
-      font-family: ${props => props.theme.font.roboto};
-      color: ${props => props.theme.color.primary};
-    }
+    font-size: 4.8rem;
+    font-family: ${props => props.theme.font.roboto};
+    color: ${props => props.theme.color.primary};
   }
 `;
 
-export const ContainerFiles = styled.ul`
+export const ListFiles = styled.ul`
   width: 100%;
 
   display: grid;
@@ -114,33 +121,54 @@ export const ContainerFiles = styled.ul`
   gap: 3rem;
 
   padding: 1.2rem;
+`;
 
-  li {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.7rem;
-
-    border-radius: 0.5rem;
-    background: ${props => props.theme.color.ternary};
-    border: 0.2rem solid ${props => props.theme.font.color};
-
-    font-family: ${props => props.theme.font.roboto};
-    color: ${props => props.theme.font.color};
-    font-size: 1.2rem;
-    font-weight: 500;
-
-    user-select: none;
-
-    button {
-      border: none;
-      background: none;
-      outline: none;
-
-      cursor: pointer;
-    }
+const color = props => {
+  if (!props.isSuccess) {
+    return 'red';
   }
+
+  return props.alreadyDownloaded ? props.theme.color.primary : props.theme.font.color;
+};
+
+export const ItemFile = styled.li`
+  position: relative;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem;
+
+  border-radius: 0.5rem;
+  background: ${props => props.theme.color.ternary};
+  border: 0.2rem solid ${props => color(props)};
+
+  font-family: ${props => props.theme.font.roboto};
+  font-size: 1.2rem;
+  font-weight: 800;
+
+  color: ${props => color(props)};
+
+  user-select: none;
+
+  button {
+    border: none;
+    background: none;
+    outline: none;
+
+    cursor: pointer;
+  }
+`;
+
+export const ContainerButtons = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ErrorMessage = styled.span`
+  color: red;
+  margin-right: 0.5rem;
 `;
 
 export default ContainerMain;
