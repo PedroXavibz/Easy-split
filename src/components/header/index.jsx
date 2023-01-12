@@ -19,17 +19,17 @@ const Header = () => {
   return (
     <ContainerHeader>
       <Context>
-        <a href='#/'>
-          <img src={Logo} alt='logo' title='Easy split' />
+        <a href="#/">
+          <img src={Logo} alt="logo" title="Easy split" />
         </a>
         <nav>
           <ul>
             <li>
-              <a href='#about'>About</a>
+              <a href="#about">About</a>
             </li>
-            <li className='item-spacing'>
+            <li className="item-spacing">
               <a
-                href='#/contact'
+                href="#/contact"
                 style={!isHidden ? { color: '#ffffff', textDecoration: 'underline #ffffff' } : {}}
                 onClick={() => setIsHidden(!isHidden)}
               >
@@ -38,19 +38,19 @@ const Header = () => {
               {!isHidden && (
                 <ul>
                   <li>
-                    <a href='https://github.com/PedroXavibz'>
+                    <a href="https://github.com/PedroXavibz">
                       <FiGithub />
                       github
                     </a>
                   </li>
                   <li>
-                    <a href='mailto:joao.pedro.xavibz@gmail.com' subject='link'>
+                    <a href="mailto:joao.pedro.xavibz@gmail.com">
                       <MdAlternateEmail />
                       email
                     </a>
                   </li>
                   <li>
-                    <a href='https://www.linkedin.com/in/joão-pedro-45ab4a212/'>
+                    <a href="https://www.linkedin.com/in/joão-pedro-45ab4a212/">
                       <RiLinkedinLine />
                       linkedin
                     </a>

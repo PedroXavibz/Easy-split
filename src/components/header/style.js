@@ -63,6 +63,10 @@ const dropDownMenu = css`
             width: 75%;
           }
         }
+
+      svg {
+          margin-right: 0.5rem;
+        }
       }
     }
   }
