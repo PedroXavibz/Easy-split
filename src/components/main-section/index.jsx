@@ -21,6 +21,7 @@ import ContainerMain, {
 const MainSection = () => {
   const API = process.env.REACT_APP_API_URL;
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const maxFileSize = 20 * 1048576; // 20 Mb
 
   const inputHandler = ({ target }) => {
     const files = [...target.files].map(f => {
@@ -29,9 +30,14 @@ const MainSection = () => {
       curFile.isUploading = false;
       curFile.isDownloading = false;
       curFile.alreadyDownloaded = false;
-      curFile.isSuccess = true;
       curFile.isHover = false;
-      curFile.errorMessage = '';
+      curFile.isSuccess = maxFileSize > curFile.size;
+
+      if (!curFile.isSuccess) {
+        curFile.errorMessage = 'File size must be less then 20Mb';
+      } else {
+        curFile.errorMessage = '';
+      }
 
       return curFile;
     });
@@ -99,7 +105,9 @@ const MainSection = () => {
         toggleFile(file.id, 'isUploading');
         toggleFile(file.id, 'alreadyDownloaded');
 
-        const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
+        const downloadUrl = window.URL.createObjectURL(
+          new Blob([response.data]),
+        );
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.setAttribute('download', `${file.name.split('.')[0]}.zip`);
@@ -114,7 +122,9 @@ const MainSection = () => {
           toggleFile(file.id, 'isSuccess');
         }
 
-        const error = await JSON.parse(new TextDecoder().decode(err.response.data));
+        const error = await JSON.parse(
+          new TextDecoder().decode(err.response.data),
+        );
         setErrorMessage(file.id, error.message);
       });
   };
@@ -136,33 +146,41 @@ const MainSection = () => {
 
   const checkButton = file => {
     if (file.isUploading) {
-      return (<Spinner isUploading={file.isUploading} />);
+      return <Spinner isUploading={file.isUploading} />;
     }
 
     if (file.isDownloading) {
-      return (<Spinner />);
+      return <Spinner />;
     }
 
     if (!file.isSuccess) {
       return (
         <ContainerButtons>
-          {file.isHover
-            ? (
-              <>
-                <button type="button" title="Remove" onClick={() => removeFile(file.id)}>
-                  <TiTimes size="17px" color="red" />
-                </button>
-                <button type="button" title="Reupload" onClick={() => reUpload(file.id)}>
+          {file.isHover ? (
+            <>
+              <button
+                type="button"
+                title="Remove"
+                onClick={() => removeFile(file.id)}
+              >
+                <TiTimes size="17px" color="red" />
+              </button>
+              {maxFileSize > file.size ? (
+                <button
+                  type="button"
+                  title="Reupload"
+                  onClick={() => reUpload(file.id)}
+                >
                   <AiOutlineReload size="17px" color="#147b9e" />
                 </button>
-              </>
-            )
-            : (
-              <>
-                <ErrorMessage>{file.errorMessage}</ErrorMessage>
-                <MdInfoOutline size="17px" color="red" />
-              </>
-            )}
+              ) : null}
+            </>
+          ) : (
+            <>
+              <ErrorMessage>{file.errorMessage}</ErrorMessage>
+              <MdInfoOutline size="17px" color="red" />
+            </>
+          )}
         </ContainerButtons>
       );
     }
@@ -170,15 +188,17 @@ const MainSection = () => {
     if (file.alreadyDownloaded) {
       return (
         <ContainerButtons>
-          {file.isHover
-            ? (
-              <button type="button" title="Remove" onClick={() => removeFile(file.id)}>
-                <TiTimes size="17px" color="red" />
-              </button>
-            )
-            : (
-              <MdFileDownloadDone title="Done" size="17px" color="#29BB89" />
-            )}
+          {file.isHover ? (
+            <button
+              type="button"
+              title="Remove"
+              onClick={() => removeFile(file.id)}
+            >
+              <TiTimes size="17px" color="red" />
+            </button>
+          ) : (
+            <MdFileDownloadDone title="Done" size="17px" color="#29BB89" />
+          )}
         </ContainerButtons>
       );
     }
@@ -207,7 +227,7 @@ const MainSection = () => {
           <input
             id="upload"
             type="file"
-            /* accept="video/*" */
+            accept="video/*"
             multiple
             name="file"
             onChange={inputHandler}
@@ -253,7 +273,7 @@ const MainSection = () => {
             })}
           </ListFiles>
         ) : (
-          <h1>Maximum size 500MB</h1>
+          <h1>Maximum size 20MB</h1>
         )}
       </ContainerFiles>
     </ContainerMain>
